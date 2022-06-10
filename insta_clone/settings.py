@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = '=q_tdr18a@h@v1r^=#9cr$%rzkg_mq1e2c^c_hp%zcb#ybgc^1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['myown-instaclone.herokuapp.com', '127.0.0.1']
 
@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'instagram',
+    'whitenoise.runserver_nostatic',
+
+
     
     
     
@@ -88,7 +91,8 @@ DATABASES = {
         'PASSWORD': '12345678'
     }
 }
-
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -148,5 +152,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 django_heroku.settings(locals())
 
-prod_db  =  dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
+# prod_db  =  dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(prod_db)
