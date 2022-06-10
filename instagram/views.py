@@ -6,6 +6,7 @@ from instagram.forms import NewPostform
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 
+@login_required
 def index(request):
     user = request.user
     posts = Stream.objects.filter(user=user)
