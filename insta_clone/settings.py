@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'instagram',
     'whitenoise.runserver_nostatic',
-    'authy',
+    
 
     
     

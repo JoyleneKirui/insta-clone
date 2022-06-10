@@ -17,15 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from authy.views import UserProfile, follow
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('users/', include('authy.urls')),
     path('', include('instagram.urls')),
 
-    path('<username>/', UserProfile, name='profile'),
+    
   
 ]
 
