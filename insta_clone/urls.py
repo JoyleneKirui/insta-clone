@@ -17,23 +17,16 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from authy.views import UserProfile, follow
 
-# from elements import views as e_views
-# from authusers import views as auth_views
-# from authy.views import UserProfile, follow
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('users/', include('authy.urls')),
+    path('users/', include('authy.urls')),
     path('', include('instagram.urls')),
-    # path('message/', include('directs.urls')),
-    # path('notifications/', include('notification.urls')),
 
-    # # profile
-    # path('<username>/', UserProfile, name='profile'),
-    # path('<username>/saved/', UserProfile, name='profilefavourite'),
-    # path('<username>/follow/<option>/', follow, name='follow'),
-
+    path('<username>/', UserProfile, name='profile'),
+  
 ]
 
 # This is used for
