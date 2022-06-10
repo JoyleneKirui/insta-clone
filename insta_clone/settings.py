@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 from pathlib import Path
 import os
 import django_heroku
-
+import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
@@ -26,7 +26,7 @@ SECRET_KEY = '=q_tdr18a@h@v1r^=#9cr$%rzkg_mq1e2c^c_hp%zcb#ybgc^1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['instagram-clone-d.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['myinsta-clone.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -141,13 +141,7 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-LOGIN_REDIRECT_URL = 'index'
-
-LOGOUT_REDIRECT_URL = 'sign-in'
-
-LOGIN_URL = 'sign-in'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
