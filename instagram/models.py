@@ -4,6 +4,7 @@ from django.db.models.base import Model
 from django.db.models.signals import post_save, post_delete
 from django.utils.text import slugify
 from django.urls import reverse
+
 import uuid
 # from notification.models import Notification
 
@@ -95,7 +96,7 @@ class Stream(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
     date = models.DateTimeField()
-
+    
     def add_post(sender, instance, *args, **kwargs):
         post = instance
         user = post.user
@@ -113,3 +114,20 @@ post_delete.connect(Likes.user_unliked_post, sender=Likes)
 
 post_save.connect(Follow.user_follow, sender=Follow)
 post_delete.connect(Follow.user_unfollow, sender=Follow)
+
+class Likes(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="post_likes")
+
+    def user_liked_post(sender, instance, *args, **kwargs):
+        like = instance
+        post = like.post
+        sender = like.user
+        
+
+    def user_unliked_post(sender, instance, *args, **kwargs):
+        like = instance
+        post = like.post
+        sender = like.user
+       
+
